@@ -1,153 +1,211 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ChevronDown, MapPin, Search, ChevronRight } from "lucide-react";
-/**
- * Header Component
- * -----------------
- * Displays the main site navigation including:
- * - Logo
- * - Used Cars & Near Dealer dropdowns
- * - Search bar
- * - Location & Login button
- *
- * Hover over "Used Cars" or "Near Dealer" to see dropdowns.
- */
-export default function Header() {
+import {
+  FaSearch,
+  FaMapMarkerAlt,
+  FaChevronRight,
+  FaChevronDown,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
-  // State to toggle dropdown visibility
-  
-  const [usedCarsOpen, setUsedCarsOpen] = useState(false);
-  const [nearDealerOpen, setNearDealerOpen] = useState(false);
+export default function Header() {
+  const [showUsedCars, setShowUsedCars] = useState(false);
+  const [showDealer, setShowDealer] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("Browse by Model");
+  const [location, setLocation] = useState("Noida");
 
   return (
-    <header className="w-full bg-white border-b shadow-sm">
-      <div className="max-w-[1300px] mx-auto flex flex-wrap items-center justify-between py-4 px-6 gap-3 sm:gap-4">
+    <header className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-[1400px] mx-auto flex flex-wrap items-center justify-between px-6 py-4">
+        {/* ========================= LEFT SECTION ========================= */}
+        <div className="flex items-center space-x-4">
+          {/* Logo */}
+          <h1 className="text-2xl font-bold text-blue-700">CARLONOW</h1>
 
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-blue-700 tracking-wide">
-          CARLONOW
-        </Link>
+          {/* Navigation Dropdowns */}
+          <div className="hidden lg:flex items-center space-x-2">
+            {/* ===================== USED CARS DROPDOWN ===================== */}
+            <div
+              className="relative"
+              onMouseEnter={() => setShowUsedCars(true)}
+              onMouseLeave={() => setShowUsedCars(false)}
+            >
+              <button className="flex items-center space-x-1 bg-gray-50 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition text-gray-800">
+                <span>Used Cars</span>
+                <FaChevronDown className="text-gray-600" size={14} />
+              </button>
 
-        {/* Center: Dropdowns + Search */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 flex-1 min-w-[250px]">
+              {/* Mega Dropdown */}
+              <AnimatePresence>
+  {showUsedCars && (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{ duration: 0.2 }}
+      className="fixed left-0 top-[72px] w-full bg-white shadow-xl border-t border-gray-200 flex z-50"
+    >
+      {/* LEFT PANEL */}
+      <div className="w-[300px] bg-gray-50 border-r border-gray-200 p-5">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="font-semibold text-gray-900 text-[15px]">
+            Buy Used Cars in {location}
+          </h3>
+          <span className="text-orange-500 text-sm font-semibold cursor-pointer hover:underline">
+            Change city
+          </span>
+        </div>
 
-          {/* USED CARS DROPDOWN */}
-          <div
-            className="relative"
-            onMouseEnter={() => setUsedCarsOpen(true)}
-            onMouseLeave={() => setUsedCarsOpen(false)}
-          >
-            <button className="flex items-center gap-1 bg-gray-100 px-4 py-2 rounded-full font-semibold text-sm hover:bg-gray-200">
-              Used Cars
-              <ChevronDown size={16} />
-            </button>
+        <ul className="space-y-1 text-gray-800 text-[14px]">
+          {[
+            "Browse by Model",
+            "Browse by Make",
+            "Browse by Price",
+            "Browse by Body Type",
+            "Browse by Fuel Type",
+            "Browse by Transmission",
+            "Browse by City",
+          ].map((item) => (
+            <li
+              key={item}
+              className={`flex justify-between items-center px-3 py-2 rounded-md cursor-pointer hover:bg-white transition ${
+                activeCategory === item
+                  ? "bg-white text-blue-700 font-semibold border-l-4 border-orange-500"
+                  : ""
+              }`}
+              onClick={() => setActiveCategory(item)}
+            >
+              <span>{item}</span>
+              <FaChevronRight className="text-gray-500 text-xs" />
+            </li>
+          ))}
+        </ul>
+      </div>
 
-            {usedCarsOpen && (
-              <div className="absolute left-0 mt-3 bg-white shadow-lg border rounded-lg w-[800px] z-50 p-6 grid grid-cols-3 gap-6 text-sm">
-                {/* Column 1 */}
-                <div>
-                  <h4 className="font-semibold mb-3">Buy Used Cars in New Delhi</h4>
-                  <ul className="space-y-2">
-                    <li><Link href="#" className="hover:text-blue-600">Browse by Model <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                    <li><Link href="#" className="hover:text-blue-600">Browse by Make <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                    <li><Link href="#" className="hover:text-blue-600">Browse by Price <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                    <li><Link href="#" className="hover:text-blue-600">Browse by Body Type <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                    <li><Link href="#" className="hover:text-blue-600">Browse by Transmission <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                    <li><Link href="#" className="hover:text-blue-600">Browse by City <ChevronRight size={14} className="inline ml-1" /></Link></li>
-                  </ul>
-                </div>
+      {/* RIGHT PANEL */}
+      <div className="flex-1 p-6">
+        <h3 className="font-semibold text-gray-900 mb-3 text-[15px]">
+          {activeCategory}
+        </h3>
 
-                {/* Column 2 */}
-                <div>
-                  <h4 className="font-semibold mb-3">Browse by Model</h4>
-                  <ul className="space-y-2">
-                    <li><Link href="#">Used Hyundai i10 Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Maruti Wagon R Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Maruti Baleno Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Maruti Swift Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Hyundai i20 Cars in New Delhi</Link></li>
-                  </ul>
-                </div>
+        <div className="grid grid-cols-3 gap-y-2 text-[14.5px] text-gray-800">
+          {[
+            "Used Hyundai i10 Cars in Bangalore",
+            "Used Maruti Swift Cars in Bangalore",
+            "Used Hyundai i20 Cars in Bangalore",
+            "Used Maruti Celerio Cars in Bangalore",
+            "Used Renault Kwid Cars in Bangalore",
+            "Used Tata Tiago Cars in Bangalore",
+            "Used Tata NEXON Cars in Bangalore",
+            "Used Maruti Alto Cars in Bangalore",
+            "Used Maruti Baleno Cars in Bangalore",
+            "Used Hyundai Creta Cars in Bangalore",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-center justify-between cursor-pointer hover:text-blue-600 transition"
+            >
+              <span>{item}</span>
+              <FaExternalLinkAlt size={12} />
+            </div>
+          ))}
+        </div>
 
-                {/* Column 3 */}
-                <div>
-                  <h4 className="font-semibold mb-3 text-transparent">.</h4>
-                  <ul className="space-y-2">
-                    <li><Link href="#">Used Hyundai Creta Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Maruti Alto Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Maruti Dzire Cars in New Delhi</Link></li>
-                    <li><Link href="#">Used Tata Nexon Cars in New Delhi</Link></li>
-                  </ul>
+        <p className="text-orange-500 mt-4 text-sm font-semibold cursor-pointer hover:underline">
+          Buy cars online →
+        </p>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-                  <Link
-                    href="#"
-                    className="text-orange-600 text-sm font-semibold mt-3 inline-block"
+            </div>
+
+            {/* ===================== NEAR DEALER DROPDOWN ===================== */}
+            <div
+              className="relative"
+              onMouseEnter={() => setShowDealer(true)}
+              onMouseLeave={() => setShowDealer(false)}
+            >
+              <button className="flex items-center space-x-1 bg-gray-50 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition text-gray-800">
+                <span>Near Dealer</span>
+                <FaChevronDown className="text-gray-600" size={14} />
+              </button>
+
+              {/* Dropdown */}
+              <AnimatePresence>
+                {showDealer && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-3 w-[720px] bg-white shadow-lg rounded-md p-6 grid grid-cols-2 gap-x-8 z-50 border border-gray-200"
                   >
-                    Buy cars online →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+                    <ul className="space-y-2 text-sm font-medium text-gray-800">
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Nearby Car Dealers
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        View all Dealers
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Delhi
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Gurugram
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Ghaziabad
+                      </li>
+                    </ul>
 
-          {/* NEAR DEALER DROPDOWN */}
-          <div
-            className="relative"
-            onMouseEnter={() => setNearDealerOpen(true)}
-            onMouseLeave={() => setNearDealerOpen(false)}
-          >
-            <button className="flex items-center gap-1 bg-gray-100 px-4 py-2 rounded-full font-semibold text-sm hover:bg-gray-200">
-              Near Dealer
-              <ChevronDown size={16} />
-            </button>
-
-            {nearDealerOpen && (
-              <div className="absolute left-0 mt-3 bg-white shadow-lg border rounded-lg w-[500px] z-50 p-4 grid grid-cols-2 gap-6 text-sm">
-                <ul className="space-y-2">
-                  <li><Link href="#">Near by Car Dealer</Link></li>
-                  <li><Link href="#">View all Car Dealer</Link></li>
-                  <li><Link href="#">View Car Dealers in Delhi</Link></li>
-                  <li><Link href="#">View Car Dealers in Noida</Link></li>
-                  <li><Link href="#">View Car Dealers in Ghaziabad</Link></li>
-                </ul>
-                <ul className="space-y-2">
-                  <li><Link href="#">View Car Dealers in Gurugram</Link></li>
-                  <li><Link href="#">View Car Dealers in Faridabad</Link></li>
-                  <li><Link href="#">View Car Dealers in Greater Noida</Link></li>
-                  <li><Link href="#">View Car Dealers in Lucknow</Link></li>
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Search Bar */}
-          <div className="flex items-center border-2 border-blue-700 rounded-full overflow-hidden w-[350px] max-w-full">
-            <input
-              type="text"
-              placeholder="Search Your Car"
-              className="flex-1 px-4 py-2 outline-none text-sm"
-            />
-            <button className="bg-white px-3 text-blue-700">
-              <Search size={18} />
-            </button>
+                    <ul className="space-y-2 text-sm font-medium text-gray-800">
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Noida
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Faridabad
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Greater Noida
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Jaipur
+                      </li>
+                      <li className="hover:text-blue-600 cursor-pointer">
+                        Dealers in Lucknow
+                      </li>
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
-        {/* Right: Location + Login */}
-        <div className="flex items-center gap-3 sm:gap-4 mt-2 sm:mt-0">
-          <div className="flex items-center gap-1 text-blue-700 font-semibold">
-            <MapPin size={18} />
-            <span className="text-sm">Noida</span>
+        {/* ========================= CENTER SEARCH BAR ========================= */}
+        <div className="hidden md:flex items-center w-[40%] border border-blue-600 rounded-full px-3 py-2">
+          <input
+            type="text"
+            placeholder="Search Your Car"
+            className="flex-grow outline-none text-gray-700 px-2"
+          />
+          <FaSearch className="text-blue-700" />
+        </div>
+
+        {/* ========================= RIGHT SECTION ========================= */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-1 text-blue-700">
+            <FaMapMarkerAlt />
+            <span className="font-medium">{location}</span>
           </div>
 
-          <Link
-            href="/login"
-            className="bg-blue-700 text-white font-semibold text-sm px-5 py-2 rounded-full hover:bg-blue-800"
-          >
+          <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-1.5 rounded-full font-semibold">
             Login
-          </Link>
+          </button>
         </div>
       </div>
     </header>

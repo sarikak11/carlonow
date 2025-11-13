@@ -1,25 +1,63 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Banner() {
+  const slides = ["/img.jpg", "/image2.jpg", "/images3.jpg"];
+
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  // Auto slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [current]);
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
   return (
-    <section className="relative w-full h-[500px] md:h-[600px]">
-      {/* Background Image */}
-      <Image
-        src="/img.jpg"
-        alt="Car Banner"
-        fill
-        className="object-cover"
-        priority
-        loading = "eager"
-      />
+    <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+      {/* === SLIDER BACKGROUND === */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={slides[current]}
+            custom={direction}
+            initial={{ x: direction > 0 ? 200 : -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: direction > 0 ? -200 : 200, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slides[current]}
+              alt={`Car Slide ${current + 1}`}
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
-
-      {/* Search Card */}
-      <div className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 bg-white rounded-3xl shadow-xl p-6 md:p-8 w-[90%] max-w-sm space-y-4">
+      {/* === SEARCH CARD === */}
+      <div className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 bg-white rounded-3xl shadow-xl p-6 md:p-8 w-[90%] max-w-sm space-y-4 z-10">
         <h2 className="text-xl md:text-2xl font-bold text-gray-900 text-center">
           Search Best Dealer
         </h2>
@@ -55,6 +93,34 @@ export default function Banner() {
         <button className="w-full bg-blue-600 text-white rounded-lg py-2 text-base font-semibold hover:bg-blue-700 transition">
           Search
         </button>
+      </div>
+
+      {/* === NAVIGATION ARROWS === */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white text-gray-800 rounded-full p-2 shadow-md z-10 transition"
+      >
+        <FaChevronLeft size={20} />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white text-gray-800 rounded-full p-2 shadow-md z-10 transition"
+      >
+        <FaChevronRight size={20} />
+      </button>
+
+      {/* === DOT INDICATORS === */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              current === i ? "bg-blue-600 scale-110" : "bg-white/70 hover:bg-white"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
