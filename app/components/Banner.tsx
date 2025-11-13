@@ -6,13 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Banner() {
-  const slides = ["/img.jpg", "/image2.jpg", "/images3.jpg"];
+  const slides = ["/image/banner/img.jpg", "/image/banner/image2.jpg", "/image/banner/images3.jpg"];
 
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
 
   // Auto slide every 5 seconds
-  useEffect(() => {
+  useEffect(() => { 
     const timer = setInterval(() => {
       nextSlide();
     }, 5000);
@@ -40,7 +40,7 @@ export default function Banner() {
             initial={{ x: direction > 0 ? 200 : -200, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: direction > 0 ? -200 : 200, opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
