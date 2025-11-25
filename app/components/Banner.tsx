@@ -6,7 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Banner() {
-  const slides = ["/image/banner/img.jpg", "/image/banner/image2.jpg", "/image/banner/images3.jpg"];
+  const slides = ["/image/banner/img.jpg",
+     "/image/banner/image2.jpg", 
+     "/image/banner/images3.jpg"];
 
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);

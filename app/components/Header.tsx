@@ -211,14 +211,15 @@ export default function Header() {
         </div>
 
         {/* ========================= CENTER SEARCH BAR ========================= */}
-        <div className="hidden md:flex items-center w-[40%] border border-blue-600 rounded-full px-3 py-2">
-          <input
-            type="text"
-            placeholder="Search Your Car"
-            className="flex-grow outline-none text-gray-700 px-2 text-sm"
-          />
-          <FaSearch className="text-blue-700" />
-        </div>
+        <div className="hidden md:flex items-center w-[350px] border border-blue-600 rounded-full px-4 py-2">
+  <input
+    type="text"
+    placeholder="Search Your Car"
+    className="flex-grow outline-none text-gray-700 px-2 text-sm"
+  />
+  <FaSearch className="text-blue-700" />
+</div>
+
 
         {/* ========================= RIGHT SECTION ========================= */}
         <div className="flex items-center space-x-3 text-sm">

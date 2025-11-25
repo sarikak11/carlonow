@@ -8,11 +8,24 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
+import { HiLocationMarker } from "react-icons/hi";
+import "./listing.css";
+
 export default function Listing() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [wishlist, setWishlist] = useState<number[]>([]);
 
   const filters = ["All", "Tata", "Mahindra", "Maruti"];
+
+  // ✅ Add different car images here
+  const cars = [
+    { id: 1, img: "/image/listcard/listingimg.jpg" },
+    { id: 2, img: "/image/listcard/car1.png" },
+    { id: 3, img: "/image/listcard/car3.png" },
+    { id: 4, img: "/image/listcard/car2.png" },
+    { id: 5, img: "/image/listcard/car4.png" },
+    { id: 6, img: "/image/listcard/car3.png" },
+  ];
 
   const toggleWishlist = (id: number) => {
     if (wishlist.includes(id)) {
@@ -64,86 +77,79 @@ export default function Listing() {
       {/* SLIDER */}
       <Swiper
         modules={[Navigation]}
-        spaceBetween={20}
         navigation={{
           nextEl: ".swiper-button-next-custom",
           prevEl: ".swiper-button-prev-custom",
         }}
+        loop={true}
+        centeredSlides={false}
         breakpoints={{
-          0: { slidesPerView: 1.2 },
-          640: { slidesPerView: 2.2 },
-          768: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
+          0: { slidesPerView: 1, spaceBetween: 10 },
+          480: { slidesPerView: 1, spaceBetween: 12 },
+          640: { slidesPerView: 2, spaceBetween: 14 },
+          768: { slidesPerView: 2, spaceBetween: 16 },
+          1024: { slidesPerView: 3, spaceBetween: 18 },
+          1280: { slidesPerView: 4, spaceBetween: 20 },
         }}
       >
-        {[1, 2, 3, 4, 5, 6].map((id) => (
-<SwiperSlide key={id}>
-  <div className="rounded-2xl bg-white shadow-md hover:shadow-lg transition overflow-hidden">
 
-    {/* IMAGE + HEART + SELLER */}
-    <div className="relative ">
+        {/* 🔹 Changed to dynamic cars array */}
+        {cars.map((car) => (
+          <SwiperSlide key={car.id}>
+            <div className="bg-white shadow-md hover:shadow-lg transition rounded-[22px] 
+overflow-hidden list-car-card mx-auto">
 
-      {/* Car Image */}
-      <img
-        src="/image/listcard/listingimg.jpg"
-        alt="car"
-        className="w-full h-48 object-cover"
-      />
+              {/* IMAGE + HEART + SELLER */}
+              <div className="relative w-[304px] h-[200px] overflow-hidden rounded-t-[22px]">
+                
+                <img
+                  src={car.img}
+                  alt="car"
+                  className="list-car-img"
+                />
+{/* Heart Button */}
+                <div
+                  onClick={() => toggleWishlist(car.id)}
+                  className="absolute top-4 right-4 cursor-pointer z-20"
+                >
+                  {wishlist.includes(car.id) ? (
+                    <AiFillHeart className="text-red-600 text-2xl" />
+                  ) : (
+                    <AiOutlineHeart className="text-black text-2xl" />
+                  )}
+                </div>
+{/* Seller Badge */}
+                <div className="absolute -bottom-1 left-0 bg-white text-blue-900 text-sm font-semibold px-5 py-1.5 rounded-tr-2xl shadow-sm">
+                  Seller
+                </div>
+              </div>
+{/* CONTENT */}
+              <div className="p-2">
+                <h2 className="font-semibold text-[18px] text-[#000]">BMW M4 LXI</h2>
 
-      {/* Gradient Overlay (bottom fade) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+                <div className="flex flex-wrap gap-2 mb-2 text-[10px]">
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">22.59k km</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">Petrol</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">Manual</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">DL-1C</span>
+                </div>
 
-      {/* Heart Button */}
-      <div
-        onClick={() => toggleWishlist(id)}
-        className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-2 rounded-full shadow cursor-pointer"
-      >
-        {wishlist.includes(id) ? (
-          <AiFillHeart className="text-red-500 text-xl" />
-        ) : (
-          <AiOutlineHeart className="text-black text-xl" />
-        )}
-      </div>
+                <p className="text-lg font-bold mb-1">₹ 5.90 Lakh</p>
 
-      {/* SELLER TAG (inside image bottom left) */}
-     <div className="absolute bottom-0 left-0 translate-y-1/2 bg-white px-4 py-1 
-rounded-t-xl shadow text-blue-600 text-sm font-medium z-20">
-  Seller
-</div>
-    </div>
+                <div className="flex items-center gap-1 text-xs text-black mb-3">
+                  <HiLocationMarker className="text-black text-lg" />
+                  <span>Noida Sector 63</span>
+                </div>
 
-    {/* CONTENT */}
-    <div className="p-4 pt-6">
+                <button className="w-full bg-blue-800 text-white text-sm font-semibold py-2 rounded-lg shadow-sm">
+                  Contact Seller
+                </button>
 
-      {/* Title */}
-      <h3 className="text-xl font-semibold mb-2">BMW M4 LXI</h3>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-3 text-xs">
-        <span className="px-2 py-1 bg-gray-100 rounded-md">22.59k km</span>
-        <span className="px-2 py-1 bg-gray-100 rounded-md">Petrol</span>
-        <span className="px-2 py-1 bg-gray-100 rounded-md">Manual</span>
-        <span className="px-2 py-1 bg-gray-100 rounded-md">DL-1C</span>
-      </div>
-
-      {/* PRICE */}
-      <p className="text-xl font-bold mb-1">₹ 5.90 Lakh</p>
-
-      {/* LOCATION */}
-      <p className="text-sm text-gray-600 flex items-center gap-1 mb-4">
-        📍 Noida Sector 63
-      </p>
-
-      {/* BUTTON */}
-      <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700">
-        Contact Seller
-      </button>
-    </div>
-  </div>
-</SwiperSlide>
-
-
+              </div>
+            </div>
+          </SwiperSlide>
         ))}
+
       </Swiper>
     </section>
   );

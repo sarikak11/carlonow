@@ -1,141 +1,140 @@
 "use client";
-
 import { useState } from "react";
-import { Heart } from "lucide-react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
+
+import { HiLocationMarker } from "react-icons/hi";
+import "./listing.css";
 
 export default function NewlyAdded() {
-  const [wishlist, setWishlist] = useState<{ [key: number]: boolean }>({});
 
-  const toggleWish = (id: number) => {
-    setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
+  // ✅ Wishlist state
+  const [wishlist, setWishlist] = useState<number[]>([]);
+
+  // ✅ Toggle function
+  const toggleWishlist = (id: number) => {
+    setWishlist((prev) =>
+      prev.includes(id)
+        ? prev.filter((item) => item !== id) // remove
+        : [...prev, id] // add
+    );
   };
 
+  // Cars data:
   const cars = [
-    {
-      id: 1,
-      title: "BMW M4 LXI",
-      km: "40000 Km",
-      fuel: "Diesel",
-      type: "Manual",
-      state: "UP 16",
-      price: "₹ 5.90 Lakh",
-      emi: "₹ 8,798 /month*",
-      location: "Noida Sector 63, B Block",
-      seller: "Dealer",
-      shortlistCount: 100,
-      image: "/image/listcard/listingimg.jpg",
-    },
-    {
-      id: 2,
-      title: "BMW M4 LXI",
-      km: "40000 Km",
-      fuel: "Diesel",
-      type: "Manual",
-      state: "UP 16",
-      price: "₹ 5.90 Lakh",
-      emi: "₹ 8,798 /month*",
-      location: "Noida Sector 63, B Block",
-      seller: "Dealer",
-      shortlistCount: 100,
-      image: "/image/listcard/listingimg.jpg",
-    },
-    {
-      id: 3,
-      title: "BMW M4 LXI",
-      km: "40000 Km",
-      fuel: "Diesel",
-      type: "Manual",
-      state: "UP 16",
-      price: "₹ 5.90 Lakh",
-      emi: "₹ 8,798 /month*",
-      location: "Noida Sector 63, B Block",
-      seller: "Dealer",
-      shortlistCount: 100,
-      image: "/image/listcard/listingimg.jpg",
-    },
-    {
-      id: 4,
-      title: "BMW M4 LXI",
-      km: "40000 Km",
-      fuel: "Diesel",
-      type: "Manual",
-      state: "UP 16",
-      price: "₹ 5.90 Lakh",
-      emi: "₹ 8,798 /month*",
-      location: "Noida Sector 63, B Block",
-      seller: "Dealer",
-      shortlistCount: 100,
-      image: "/image/listcard/listingimg.jpg",
-    },
+    { id: 1, img: "/image/listcard/listingimg.jpg" },
+    { id: 2, img: "/image/listcard/car1.png" },
+    { id: 3, img: "/image/listcard/car3.png" },
+    { id: 4, img: "/image/listcard/car2.png" },
+    { id: 5, img: "/image/listcard/car4.png" },
+    { id: 6, img: "/image/listcard/car3.png" },
   ];
 
   return (
-    <div className="px-6 mt-10">
-      <h2 className="text-3xl font-semibold mb-6">Newly Added</h2>
+    <section className="w-full px-6 mt-10 relative">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {cars.map((car) => (
-          <div
-            key={car.id}
-            className="border rounded-xl shadow-sm p-3 bg-white transition hover:shadow-lg"
-          >
-            <div className="relative overflow-hidden rounded-xl">
-              <img
-                src={car.image}
-                className="rounded-xl w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
-              />
+      {/* Title */}
+      <h2 className="text-2xl md:text-3xl font-bold mb-4">
+        Newly Added
+      </h2>
 
-              {/* Heart */}
-              <button
-                onClick={() => toggleWish(car.id)}
-                className="absolute top-3 right-3 bg-white p-1 rounded-full shadow"
-              >
-                <Heart
-                  size={20}
-                  className={
-                    wishlist[car.id]
-                      ? "fill-red-500 text-red-500"
-                      : "text-black"
-                  }
-                />
-              </button>
-            </div>
-
-            <div className="mt-3">
-              <h3 className="text-lg font-semibold">{car.title}</h3>
-
-              <div className="flex gap-2 text-xs mt-1 text-gray-600">
-                <span>{car.km}</span>
-                <span>{car.fuel}</span>
-                <span>{car.type}</span>
-                <span>{car.state}</span>
-              </div>
-
-              <p className="font-bold mt-2">{car.price}</p>
-              <p className="text-sm text-gray-600">{car.emi}</p>
-
-              <p className="text-sm mt-2 flex items-center gap-1 text-gray-700">
-                📍 {car.location}
-              </p>
-
-              <p className="text-xs text-gray-500">{car.seller}</p>
-
-              <div className="flex gap-2 mt-4">
-                <button className="flex-1 border rounded-full py-2 text-sm">
-                  View Dealer
-                </button>
-                <button className="flex-1 bg-green-600 text-white rounded-full py-2 text-sm">
-                  Chat Dealer
-                </button>
-              </div>
-
-              <p className="text-xs mt-2 text-gray-600">
-                ❤️ {car.shortlistCount} Shortlisted This
-              </p>
-            </div>
-          </div>
-        ))}
+      {/* LEFT ARROW */}
+      <div
+        className="swiper-button-prev-custom absolute left-0 top-[55%] z-10 bg-white shadow-lg rounded-full p-3 cursor-pointer"
+      >
+        ❮
       </div>
-    </div>
+
+      {/* RIGHT ARROW */}
+      <div
+        className="swiper-button-next-custom absolute right-0 top-[55%] z-10 bg-white shadow-lg rounded-full p-3 cursor-pointer"
+      >
+        ❯
+      </div>
+
+      {/* SLIDER */}
+      <Swiper
+        modules={[Navigation]}
+        navigation={{
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
+        }}
+        loop={true}
+        centeredSlides={false}
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 10 },
+          480: { slidesPerView: 1, spaceBetween: 12 },
+          640: { slidesPerView: 2, spaceBetween: 14 },
+          768: { slidesPerView: 2, spaceBetween: 16 },
+          1024: { slidesPerView: 3, spaceBetween: 18 },
+          1280: { slidesPerView: 4, spaceBetween: 20 },
+        }}
+      >
+
+        {cars.map((car) => (
+          <SwiperSlide key={car.id}>
+            <div className="bg-white shadow-md hover:shadow-lg transition rounded-[22px] overflow-hidden list-car-card mx-auto">
+
+              {/* IMAGE + HEART + SELLER */}
+              <div className="relative w-[304px] h-[200px] overflow-hidden rounded-t-[22px]">
+
+                <img
+                  src={car.img}
+                  alt="car"
+                  className="list-car-img"
+                />
+
+                {/* Heart Toggle */}
+                <div
+                  onClick={() => toggleWishlist(car.id)}
+                  className="absolute top-4 right-4 cursor-pointer z-20"
+                >
+                  {wishlist.includes(car.id) ? (
+                    <AiFillHeart className="text-red-600 text-2xl" />
+                  ) : (
+                    <AiOutlineHeart className="text-black text-2xl" />
+                  )}
+                </div>
+
+                {/* Seller Badge */}
+                <div className="absolute -bottom-1 left-0 bg-white text-blue-900 text-sm font-semibold px-5 py-1.5 rounded-tr-2xl shadow-sm">
+                  Seller
+                </div>
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-2">
+                <h2 className="font-semibold text-[18px] text-[#000]">
+                  BMW M4 LXI
+                </h2>
+
+                <div className="flex flex-wrap gap-2 mb-2 text-[10px]">
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">22.59k km</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">Petrol</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">Manual</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded-md">DL-1C</span>
+                </div>
+
+                <p className="text-lg font-bold mb-1">₹ 5.90 Lakh</p>
+
+                <div className="flex items-center gap-1 text-xs text-black mb-3">
+                  <HiLocationMarker className="text-black text-lg" />
+                  <span>Noida Sector 63</span>
+                </div>
+
+                <button className="w-full bg-blue-800 text-white text-sm font-semibold py-2 rounded-lg shadow-sm">
+                  Contact Seller
+                </button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+
+      </Swiper>
+    </section>
   );
 }
