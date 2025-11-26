@@ -19,13 +19,19 @@ export default function Listing() {
 
   // ✅ Add different car images here
   const cars = [
-    { id: 1, img: "/image/listcard/listingimg.jpg" },
-    { id: 2, img: "/image/listcard/car1.png" },
-    { id: 3, img: "/image/listcard/car3.png" },
-    { id: 4, img: "/image/listcard/car2.png" },
-    { id: 5, img: "/image/listcard/car4.png" },
-    { id: 6, img: "/image/listcard/car3.png" },
+    { id: 1, img: "/image/listcard/listingimg.jpg", brand: "Tata"},
+    { id: 2, img: "/image/listcard/car1.png",brand: "Maruti" },
+    { id: 3, img: "/image/listcard/car3.png", brand: "Mahindra" },
+    { id: 4, img: "/image/listcard/car2.png",brand: "Tata" },
+    { id: 5, img: "/image/listcard/car4.png",brand: "Maruti" },
+    { id: 6, img: "/image/listcard/car3.png" ,brand: "Mahindra"},
   ];
+
+   // ✅ FILTER LOGIC
+  const filteredCars =
+    activeFilter === "All"
+      ? cars
+      : cars.filter((car) => car.brand === activeFilter);
 
   const toggleWishlist = (id: number) => {
     if (wishlist.includes(id)) {
@@ -94,7 +100,7 @@ export default function Listing() {
       >
 
         {/* 🔹 Changed to dynamic cars array */}
-        {cars.map((car) => (
+        {filteredCars.map((car) => (
           <SwiperSlide key={car.id}>
             <div className="bg-white shadow-md hover:shadow-lg transition rounded-[22px] 
 overflow-hidden list-car-card mx-auto">
