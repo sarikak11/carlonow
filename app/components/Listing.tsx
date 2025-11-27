@@ -19,15 +19,15 @@ export default function Listing() {
 
   // ✅ Add different car images here
   const cars = [
-    { id: 1, img: "/image/listcard/listingimg.jpg", brand: "Tata"},
-    { id: 2, img: "/image/listcard/car1.png",brand: "Maruti" },
+    { id: 1, img: "/image/listcard/listingimg.jpg", brand: "Tata" },
+    { id: 2, img: "/image/listcard/car1.png", brand: "Maruti" },
     { id: 3, img: "/image/listcard/car3.png", brand: "Mahindra" },
-    { id: 4, img: "/image/listcard/car2.png",brand: "Tata" },
-    { id: 5, img: "/image/listcard/car4.png",brand: "Maruti" },
-    { id: 6, img: "/image/listcard/car3.png" ,brand: "Mahindra"},
+    { id: 4, img: "/image/listcard/car2.png", brand: "Tata" },
+    { id: 5, img: "/image/listcard/car4.png", brand: "Maruti" },
+    { id: 6, img: "/image/listcard/car3.png", brand: "Mahindra" },
   ];
 
-   // ✅ FILTER LOGIC
+  // ✅ FILTER LOGIC
   const filteredCars =
     activeFilter === "All"
       ? cars
@@ -107,13 +107,13 @@ overflow-hidden list-car-card mx-auto">
 
               {/* IMAGE + HEART + SELLER */}
               <div className="relative w-[304px] h-[200px] overflow-hidden rounded-t-[22px]">
-                
+
                 <img
                   src={car.img}
                   alt="car"
                   className="list-car-img"
                 />
-{/* Heart Button */}
+                {/* Heart Button */}
                 <div
                   onClick={() => toggleWishlist(car.id)}
                   className="absolute top-4 right-4 cursor-pointer z-20"
@@ -124,12 +124,12 @@ overflow-hidden list-car-card mx-auto">
                     <AiOutlineHeart className="text-black text-2xl" />
                   )}
                 </div>
-{/* Seller Badge */}
+                {/* Seller Badge */}
                 <div className="absolute -bottom-1 left-0 bg-white text-blue-900 text-sm font-semibold px-5 py-1.5 rounded-tr-2xl shadow-sm">
                   Seller
                 </div>
               </div>
-{/* CONTENT */}
+              {/* CONTENT */}
               <div className="p-2">
                 <h2 className="font-semibold text-[18px] text-[#000]">BMW M4 LXI</h2>
 

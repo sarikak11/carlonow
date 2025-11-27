@@ -1,0 +1,316 @@
+:root {
+  --background: #ffffff;
+  --border-color: #0d469d;
+  --button-background: #0d469d;
+  --text-primary: #0d469d;
+  --text-black: #000000;
+  --text-white: #ffffff;
+}
+
+
+/* ========================= HEADER CONTAINER ========================= */
+.header-container {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.header-wrapper {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  padding: 16px 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========================= LEFT SECTION ========================= */
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0a3da3;
+  margin-right: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+/* ========================= DROPDOWN BUTTON ========================= */
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 4px 10px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.dropdown-btn:hover {
+ color: #fff;
+ font-family: 16px;
+ padding: 4px 10px;
+  background-color: #0d469d;
+  border-radius: 10px;
+}
+
+.dropdown-icon {
+  color: #000;
+}
+.dropdown-btn:hover .dropdown-icon {
+  color: #fff;
+}
+
+/* ========================= MEGA DROPDOWN ========================= */
+.mega-dropdown {
+  position: fixed;
+  left: 0;
+  top: 72px;
+  width: 100%;
+  background: white;
+  display: flex;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  z-index: 999;
+}
+
+.mega-left {
+  width: 300px;
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.mega-left-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.change-city {
+  color: #ff6200;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mega-category-list {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.mega-category-item {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+}
+
+.mega-category-item:hover {
+  background: #fff;
+}
+
+.mega-category-item.active {
+  background: #fff;
+  border-left: 4px solid #ff6200;
+  font-weight: bold;
+}
+
+/* RIGHT PANEL */
+.mega-right {
+  flex: 1;
+  padding: 20px;
+}
+
+.mega-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.mega-grid-item {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #555;
+}
+
+.mega-grid-item:hover {
+  color: #0a3da3;
+}
+
+.buy-online-link {
+  margin-top: 12px;
+  color: #ff6200;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ========================= DEALER DROPDOWN ========================= */
+.dealer-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 700px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  border-radius: 8px;
+  z-index: 99;
+}
+
+.dealer-dropdown ul li {
+  padding: 6px 0;
+  cursor: pointer;
+  color: #444;
+}
+
+.dealer-dropdown ul li:hover {
+  color: #0a3da3;
+}
+
+/* ========================= SEARCH BAR ========================= */
+.search-bar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    border: 1px solid #0d469d;
+    border-radius: 10px;
+    padding: 6px 12px;
+  }
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  color: #444;
+}
+
+.search-icon {
+  color: #0a3da3;
+}
+
+/* ========================= RIGHT SECTION ========================= */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.location-display {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .location-display {
+    display: flex;
+    align-items: center;
+    color: #0a3da3;
+    gap: 4px;
+  }
+}
+
+.login-btn {
+  padding: 4px 13px;
+  border: 1px solid #0a3da3;
+  color: #0a3da3;
+  font-weight: bold;
+  border-radius: 10px;
+  background: transparent;
+}
+
+.login-btn:hover {
+  background: #0a3da3;
+  color: white;
+}
+
+.mobile-menu-btn {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #0a3da3;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+/* ========================= MOBILE MENU ========================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100%;
+  background: white;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 999;
+}
+
+.mobile-menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-links button {
+  display: block;
+  padding: 10px 0;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.mobile-login {
+  width: 100%;
+  padding: 12px;
+  background: #0a3da3;
+  color: white;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
+/* header css end here  */
+
+
+/* banner section css start here */
+
+/* banner section css end here */

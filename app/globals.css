@@ -2,8 +2,12 @@
 
 :root {
   --background: #ffffff;
-  
+  --border-color: #0d469d;
+  --button-background: #0d469d;
+  --text-primary: #0d469d;
+  --text-secondary: #000000;
 }
+
 
 
 
