@@ -1,13 +1,13 @@
-import Banner from "./components/Banner";
-import Listing from "./components/Listing";
-import BestDealer from "./components/BestDealer";
-import NewlyAdded from "./components/NewlyAdded";
-import HowWork from "./components/HowWork";
-import PopularDealers from "./components/PopularDealers";
-import PopularBrands from "./components/PopularBrands";
-import VerifyDealerCity from "./components/VerifyDealerCity";
-import NewsSection from "./components/NewsSection";
-import DealerReviews from "./components/DealerReviews";
+import Banner from "./pages/home/Banner";
+import Listing from "./pages/home/Listing";
+import BestDealer from "./pages/home/BestDealer";
+import NewlyAdded from "./pages/home/NewlyAdded";
+import HowWork from "./pages/home/HowWork";
+import PopularDealers from "./pages/home/PopularDealers";
+import PopularBrands from "./pages/home/PopularBrands";
+import VerifyDealerCity from "./pages/home/VerifyDealerCity";
+import NewsSection from "./pages/home/NewsSection";
+import DealerReviews from "./pages/home/DealerReviews";
 
 
 export default function Home() {
