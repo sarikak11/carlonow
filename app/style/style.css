@@ -314,3 +314,192 @@
 /* banner section css start here */
 
 /* banner section css end here */
+
+/* here the css how work carlonow */
+.how-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.how-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #111;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.how-card {
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.how-icon {
+  margin-bottom: 15px;
+}
+
+.how-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.how-card-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .how-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-card {
+    padding: 25px 18px;
+  }
+}
+
+
+
+
+/* here the css of footer  */
+/* ==== FOOTER WRAPPER ==== */
+.footer {
+  background: #111a24;
+  color: #d7dbe0;
+  padding: 50px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* ==== MAIN GRID ==== */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* ==== LOGO ==== */
+.footer-logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.footer-icon {
+  margin-right: 8px;
+  color: #3b82f6;
+}
+
+/* ==== COLUMN HEADING ==== */
+.footer-heading {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ==== LIST ==== */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col ul li a {
+  text-decoration: none;
+  color: #c0c5cb;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+/* ==== SOCIAL ICONS ==== */
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.social-icon {
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #c0c5cb;
+}
+.social-icon:hover {
+  color: #fff;
+}
+
+/* ==== BOTTOM BAR ==== */
+.footer-bottom {
+  border-top: 1px solid #2d3a46;
+  margin-top: 40px;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+}
+
+.footer-links a {
+  margin-left: 20px;
+  color: #c0c5cb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
