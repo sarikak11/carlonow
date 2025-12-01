@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function VerifyCity() {
+export default function VerifyDealerCity() {
   const cities = [
     "/image/city/delhi.png",
     "/image/city/delhi.png",
@@ -11,29 +11,30 @@ export default function VerifyCity() {
   ];
 
   return (
-    <div className="w-full mt-14 px-6">
-      <h2 className="text-2xl font-bold mb-10">
-        Carlonow Verify Delear in Your City
-      </h2>
+   <div className="city-section full-width">
+  <h2 className="section-heading">Carlonow Verify Dealer in Your City</h2>
 
-      <div className="flex justify-between items-start gap-10">
-        {cities.map((src, i) => (
-          <div key={i} className="flex flex-col items-center w-[160px]">
-            <Image
-              src={src}
-              width={150}
-              height={150}
-              alt="City"
-              className="rounded-md object-cover"
-            />
+  <div className="city-row full-width">
+    {cities.map((src, i) => (
+      <div key={i} className="city-card">
+        <Image
+          src={src}
+          width={120}
+          height={120}
+          alt="City"
+          className="city-img"
+        />
 
-            <h3 className="text-xl font-semibold mt-3">Delhi</h3>
-            <p className="text-sm leading-4 mt-1 text-center">
-              500 + Verify Delear <br /> 1000 + Used Car
-            </p>
-          </div>
-        ))}
+        <h3 className="city-name">Delhi</h3>
+        <p className="city-info">
+          500+ Verified Dealers <br />
+          1000+ Used Cars
+        </p>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+ 
+    
   );
 }

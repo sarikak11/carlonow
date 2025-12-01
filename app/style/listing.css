@@ -12,6 +12,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 16px;
+  color: black;
 }
 
 @media (min-width: 768px) {
@@ -25,6 +26,7 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+  color: black;
 }
 
 .filter-btn {
@@ -78,6 +80,7 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: 0.2s;
   width: 304px;
+  color: black;
 }
 
 .list-car-card:hover {
@@ -92,6 +95,7 @@
   overflow: hidden;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
+  
 }
 
 .list-car-img {
@@ -126,12 +130,14 @@
 /* Card content */
 .car-content {
   padding: 12px;
+  color: black;
 }
 
 .car-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
+  color: black;
 }
 
 /* Tags */
@@ -140,6 +146,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 8px;
+  color: rgb(102, 102, 102);
 }
 
 .car-tag {
@@ -147,6 +154,7 @@
   background: #f3f3f3;
   padding: 4px 8px;
   border-radius: 6px;
+  color: black;
 }
 
 /* Price */
@@ -154,6 +162,7 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
+  color: black;
 }
 
 /* Location */
@@ -163,6 +172,7 @@
   gap: 6px;
   font-size: 12px;
   margin-bottom: 12px;
+  color: black;
 }
 
 .car-location-icon {

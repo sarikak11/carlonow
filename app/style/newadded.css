@@ -11,6 +11,7 @@
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
+  color: #000;
 }
 
 @media (min-width: 768px) {
@@ -53,6 +54,7 @@
   margin-right: auto;
   transition: 0.3s;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #000;
 }
 
 .newadded-card:hover {
@@ -67,6 +69,7 @@
   overflow: hidden;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
+  color: #000;
 }
 
 .newadded-img {
@@ -111,6 +114,7 @@
 /* CONTENT */
 .newadded-content {
   padding: 10px;
+  color: #000;
 }
 
 .newadded-title-card {
@@ -125,6 +129,7 @@
   gap: 8px;
   font-size: 10px;
   margin-bottom: 8px;
+  color: rgb(114, 114, 114);
 }
 
 .newadded-tags span {
@@ -137,6 +142,7 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 6px;
+  color: #000;
 }
 
 .newadded-location {

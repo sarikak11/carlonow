@@ -15,6 +15,7 @@
   top: 0;
   z-index: 50;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  
 }
 
 .header-wrapper {
@@ -109,7 +110,7 @@
 }
 
 .change-city {
-  color: #ff6200;
+  color: #0a3da3;
   font-size: 13px;
   cursor: pointer;
 }
@@ -164,7 +165,7 @@
 
 .buy-online-link {
   margin-top: 12px;
-  color: #ff6200;
+  color: #2506b3;
   font-weight: bold;
   cursor: pointer;
 }
@@ -313,7 +314,6 @@
 
 /* banner section css start here */
 
-/* banner section css end here */
 
 /* here the css how work carlonow */
 .how-section {
@@ -334,6 +334,7 @@
   gap: 25px;
   max-width: 1100px;
   margin: 0 auto;
+  color: #000;
 }
 
 .how-card {
@@ -502,4 +503,53 @@
     gap: 10px;
     text-align: center;
   }
+}
+
+
+
+/* Verify your city css code is here  */
+
+/* Force full width */
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.city-section {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%); /* forces TRUE edge-to-edge full width */
+}
+
+/* Fix heading alignment */
+.section-heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 40px 0 20px;
+  padding-left: 20px; 
+}
+
+/* Make row stretch the entire page */
+.city-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;        /* <-- FULL WIDTH */
+  max-width: 100%;    /* <-- FULL WIDTH */
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 20px;
+  scroll-behavior: smooth;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Cards */
+.city-card {
+  flex: 0 0 200px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.2s;
 }
