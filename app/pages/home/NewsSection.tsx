@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import "../../style/news.css"; // ✅ import your CSS file
 
 export default function NewsSection() {
   const newsList = [
@@ -9,7 +10,7 @@ export default function NewsSection() {
       id: 1,
       title: "Women's Basketball Semifinals Preview And Schedule",
       desc: "The semifinal showdown is set to be an intense match...",
-      image: "/image/news/news1.jpg",
+      image: "/image/newsimg/newsimg1.png",
       full:
         "Full detailed article about Women's Basketball Semifinals. Here you can add long content...",
     },
@@ -17,7 +18,7 @@ export default function NewsSection() {
       id: 2,
       title: "Snoop Dogg Breaking Electrifies Paris 2024 Olympics",
       desc: "The breaking competition kicked off with a massive performance...",
-      image: "/image/news/news2.jpg",
+      image: "/image/newsimg/newsimg2.png",
       full:
         "Full detailed article about Snoop Dogg electrifying the Olympics...",
     },
@@ -25,7 +26,7 @@ export default function NewsSection() {
       id: 3,
       title: "Carlos Nasar Wins 89kg Gold and Breaks World Record",
       desc: "The Bulgarian weightlifter smashed the world record...",
-      image: "/image/news/news3.jpg",
+      image: "/image/newsimg/newsimg3.png",
       full:
         "Full article about Carlos Nasar's incredible record...",
     },
@@ -34,46 +35,44 @@ export default function NewsSection() {
   const [activeNews, setActiveNews] = useState(newsList[0]);
 
   return (
-    <div className="w-full mt-12 px-4">
-      <h2 className="text-2xl font-bold mb-8">Latest Automobile News</h2>
+    <div className="news-wrapper">
+      <h2 className="news-heading">Latest Automobile News</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="news-grid">
 
         {/* LEFT SIDE — FULL ARTICLE */}
-        <div className="md:col-span-2">
+        <div className="news-left">
           <Image
             src={activeNews.image}
             alt="News"
             width={800}
             height={400}
-            className="rounded-lg w-full object-cover"
+            className="news-main-image"
           />
 
-          <h3 className="text-2xl font-bold mt-4">{activeNews.title}</h3>
-          <p className="text-gray-600 mt-2">{activeNews.full}</p>
+          <h3 className="news-title">{activeNews.title}</h3>
+          <p className="news-full">{activeNews.full}</p>
         </div>
 
         {/* RIGHT SIDE — NEWS LIST */}
-        <div className="space-y-6">
+        <div className="news-right">
           {newsList.map((news) => (
             <div
               key={news.id}
               onClick={() => setActiveNews(news)}
-              className="cursor-pointer p-3 rounded-lg hover:bg-gray-100 transition border flex gap-3"
+              className="news-item"
             >
               <Image
                 src={news.image}
                 alt="Small News"
                 width={120}
                 height={80}
-                className="rounded-md object-cover"
+                className="news-thumb"
               />
 
-              <div className="flex flex-col">
-                <h4 className="text-md font-semibold">{news.title}</h4>
-                <p className="text-sm text-gray-600 line-clamp-2">
-                  {news.desc}
-                </p>
+              <div className="news-content">
+                <h4 className="news-item-title">{news.title}</h4>
+                <p className="news-item-desc">{news.desc}</p>
               </div>
             </div>
           ))}

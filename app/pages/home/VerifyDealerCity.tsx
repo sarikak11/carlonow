@@ -1,4 +1,7 @@
 import Image from "next/image";
+import "../../style/style.css";
+
+
 
 export default function VerifyDealerCity() {
   const cities = [
