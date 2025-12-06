@@ -1,5 +1,9 @@
 "use client";
+import Link from "next/link";
 
+<Link href="/usedcars">Used Cars</Link>
+
+ 
 import "../style/style.css";
 import { useState } from "react";
 import {
@@ -59,7 +63,9 @@ export default function Header() {
                     {/* LEFT PANEL */}
                     <div className="mega-left">
                       <div className="mega-left-title">
-                        <h3>Buy Used Cars in {location}</h3>
+                        <h3> <Link href="/usedcars" className="mega-title-link">
+    Buy Used Cars in {location}
+  </Link></h3>
                         <span className="change-city">Change city</span>
                       </div>
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "../../style/style.css";
+import "../style/style.css";
 
 
 export default function PopularBrands() {

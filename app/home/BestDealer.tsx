@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
 import { HiLocationMarker } from "react-icons/hi";
-import "../../style/bestdeal.css";
+import "../style/bestdeal.css";
 
 export default function BestDealer() {
   const [wishlist, setWishlist] = useState<number[]>([]);
