@@ -1,184 +1,356 @@
-/* ---------- PAGE WRAPPER ---------- */
+/* === NEW DESIGN CARD (Screenshot 2 Style) === */
 .usedCarsPage {
-  display: flex;
-  gap: 30px;
-  padding: 25px 40px;
-  background: #f7f9fc;
+  display: grid;
+  grid-template-columns: 280px 1fr; /* LEFT - filters, RIGHT - cars */
+  gap: 25px;
+  padding: 20px 40px;
+  width: 100%;
 }
-
-/* ---------- SIDEBAR ---------- */
 .filters {
+ background: #ffffff;
+  padding: 18px 20px;
   width: 260px;
-  background: #fff;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  height: fit-content;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  font-family: sans-serif;
 }
-
 .filters h3 {
-  margin-bottom: 20px;
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 10px;
+  color: #111827;
 }
-
 .filterBox {
-  margin-bottom: 25px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.filterBox:last-child {
+  border-bottom: none;
 }
 
 .filterBox h4 {
-  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+/* CHECKBOX STYLING */
+.filterBox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.filterBox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* RANGE SLIDER */
+.filterBox input[type="range"] {
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* APPLY BUTTON */
+.apply-btn{
+   width: 100%;
+  padding: 4px 0;
+  background-color: #0056d2;   /* Same blue */
+  color: #fff;
   font-size: 15px;
   font-weight: 500;
-}
-
-.filterBox label {
-  display: block;
-  margin: 6px 0;
-  font-size: 14px;
-}
-
-.applyBtn {
-  width: 100%;
-  padding: 12px;
-  background: #0066ff;
-  color: #fff;
-  border-radius: 10px;
   border: none;
+  border-radius: 8px;          
   cursor: pointer;
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 15px;
+  transition: 0.2s ease;
 }
 
-/* ---------- RIGHT CONTENT ---------- */
+.apply-btn:hover {
+  background-color: #0043a8; 
+}
+
+
 .carListSection {
-  flex: 1;
+  width: 100%;
 }
 
-/* TOP BAR */
-.topBar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.sortDropdown {
-  padding: 8px 12px;
-  border-radius: 7px;
-  border: 1px solid #cdd3dd;
-}
-
-/* ---------- CARS GRID ---------- */
-.carsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-/* ---------- CARD STYLE ---------- */
-.carCard {
+.newCarCard {
+  width: 100%;
   background: #fff;
-  padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-}
-
-.carCard:hover {
-  transform: translateY(-4px);
-}
-
-.carImageWrapper {
-  width: 100%;
-  height: 210px;
+  border-radius: 10px;
   overflow: hidden;
-  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.carImg {
+.newCarCard:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Image container */
+.newCarImgBox {
+  position: relative;
   width: 100%;
-  height: 100%;
+   height: 180px;
+  border-bottom: 1px solid #eee;
+}
+
+.newCarImg {
+  
   object-fit: cover;
 }
 
-/* Car Name */
-.carName {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 12px 0 8px 0;
+/* Heart Icon */
+.newHeart {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  cursor: pointer;
+  z-index: 20;
+  
+  font-size: 33px;          /* ⬅️ Make the heart icon bigger */
+    
+  transition: 0.2s ease-in-out;
 }
 
-/* Details */
-.detailsRow {
+/* Seller badge */
+.newSeller {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  background: white;
+  color: #003a83;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 18px;
+  border-top-right-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Content */
+.newCarContent {
+  padding: 12px;
+}
+
+.newCarTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Tags */
+.newTags {
   display: flex;
-  gap: 12px;
-  color: #555;
-  font-size: 14px;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.newTag {
+  background: #f3f3f3;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 6px;
 }
 
 /* Price */
-.price {
-  margin-top: 10px;
+.newPrice {
   font-size: 20px;
   font-weight: 700;
-  color: #000;
+  margin-bottom: 6px;
 }
 
-/* View Details Button */
-.detailsBtn {
+/* Location */
+.newLocation {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+/* Contact Seller Button */
+.newContactBtn {
   width: 100%;
-  padding: 10px;
-  background: #e8f0ff;
-  color: #0050d8;
+  padding: 12px;
+  background: #003a83;
+  color: white;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  font-weight: 600;
   font-size: 15px;
 }
 
-.detailsBtn:hover {
-  background: #d6e4ff;
+.newContactBtn:hover {
+  background: #002e6a;
+}
+.carsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 10px;
+}
+.filter-container {
+  width: 280px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-family: "Inter", sans-serif;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+/* HEADER */
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 14px;
 }
 
-/* ---------- PAGINATION ---------- */
+.clear-all {
+  font-size: 14px;
+  color: #2563eb;
+   font-weight: 500;
+  cursor: pointer;
+}
+/* SECTION */
+.filter-section {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #111827;
+}
+.arrow-icon {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* OPTIONS */
+.option-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.option-list label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+.option-list input[type="radio"] {
+  margin-right: 10px;
+   width: 16px;
+  height: 16px;
+}
+
+/* PRICE RANGE */
+input[type="range"] {
+  width: 100%;
+  margin-top: 14px;
+}
+.price-range-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.top-bar {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-box select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+}
+/* PAGINATION WRAPPER */
 .pagination {
   display: flex;
-  gap: 10px;
   justify-content: center;
-  margin: 35px 0 10px;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+  flex-wrap: wrap;  
+  color: #0043a8;    /* Makes it responsive on small screens */
 }
 
+/* PAGINATION BUTTONS */
 .pagination button {
-  padding: 8px 14px;
-  border-radius: 7px;
-  border: 1px solid #d4d4d4;
-  background: #fff;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.pagination .active {
-  background: #0066ff;
-  color: #fff;
-  border-color: #0066ff;
+/* HOVER EFFECT */
+.pagination button:hover {
+  background: #f2f6ff;
+  border-color: #9bb7ff;
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 1100px) {
-  .carsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* ACTIVE PAGE */
+.pagination button.active {
+  background: #0056d2;
+  color: white;
+  border-color: #0056d2;
 }
 
-@media (max-width: 700px) {
-  .usedCarsPage {
-    flex-direction: column;
+/* RESPONSIVE: SMALL SCREENS */
+@media (max-width: 600px) {
+  .pagination {
+    gap: 6px;
   }
 
-  .filters {
-    width: 100%;
-  }
-
-  .carsGrid {
-    grid-template-columns: repeat(1, 1fr);
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }

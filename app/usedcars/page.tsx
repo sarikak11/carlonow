@@ -10,7 +10,7 @@ export default function UsedCars() {
       km: "25,000 km",
       fuel: "Petrol",
       transmission: "Manual",
-      img: "/cars/swift.webp",
+      img:"/image/listcard/car1.png",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export default function UsedCars() {
       km: "15,000 km",
       fuel: "Electric",
       transmission: "Automatic",
-      img: "/cars/nexon.webp",
+      img: "/image/listcard/car1.png",
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export default function UsedCars() {
       km: "50,000 km",
       fuel: "Diesel",
       transmission: "Automatic",
-      img: "/cars/creta.webp",
+      img: "/image/listcard/car2.png",
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ export default function UsedCars() {
       km: "8,000 km",
       fuel: "Diesel",
       transmission: "Manual",
-      img: "/cars/thar.webp",
+      img: "/image/listcard/car3.png",
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ export default function UsedCars() {
       km: "35,000 km",
       fuel: "Petrol",
       transmission: "Automatic",
-      img: "/cars/city.webp",
+      img: "/image/listcard/car4.png",
     },
     {
       id: 6,
@@ -55,38 +55,63 @@ export default function UsedCars() {
       km: "12,000 km",
       fuel: "Petrol",
       transmission: "Manual",
-      img: "/cars/baleno.webp",
+      img: "/image/listcard/car2.png",
     },
   ];
 
   return (
     <div className="usedCarsPage">
       {/* LEFT – FILTER SIDEBAR */}
-      <aside className="filters">
-        <h3>Filter Results</h3>
+     <aside className="filter-container">
+  <div className="filter-header">
+    <span>Filter Results</span>
+    <span className="clear-all">Clear All</span>
+  </div>
 
-        <div className="filterBox">
-          <h4>Make & Model</h4>
-          <label><input type="checkbox" /> Maruti Suzuki</label>
-          <label><input type="checkbox" /> Hyundai</label>
-          <label><input type="checkbox" /> Tata</label>
-          <label><input type="checkbox" /> Mahindra</label>
-        </div>
+  <div className="filter-section">
+    <div className="filter-title">Make & Model <span className="arrow-icon">⌃</span></div>
 
-        <div className="filterBox">
-          <h4>Price Range</h4>
-          <input type="range" min="1" max="25" />
-        </div>
+    <div className="option-list">
+      <label><input type="radio" /> Maruti Suzuki</label>
+      <label><input type="radio" /> Hyundai</label>
+      <label><input type="radio" /> Tata</label>
+      <label><input type="radio" /> Mahindra</label>
+    </div>
+  </div>
 
-        <button className="applyBtn">Apply Filters</button>
-      </aside>
+  <div className="filter-section">
+    <div className="filter-title">Price Range <span className="arrow-icon">⌃</span></div>
+
+    <input type="range" min="2" max="15" />
+    <div className="price-range-values">
+      <span>₹2 Lakh</span>
+      <span>₹15 Lakh</span>
+    </div>
+  </div>
+
+  <div className="filter-section">
+    <div className="filter-title">Model Year <span className="arrow-icon">⌄</span></div>
+  </div>
+
+  <div className="filter-section">
+    <div className="filter-title">Kilometers Driven <span className="arrow-icon">⌄</span></div>
+  </div>
+
+  <div className="filter-section">
+    <div className="filter-title">Fuel Type <span className="arrow-icon">⌄</span></div>
+  </div>
+
+  <button className="apply-btn">Apply Filters</button>
+</aside>
+
 
       {/* RIGHT – CARS SECTION */}
       <section className="carListSection">
-        <div className="topBar">
+        <div className="top-bar">
           <p>Showing 24 of 1,234 cars</p>
 
-          <select className="sortDropdown">
+          <select className="sort-box">
+            <label>Sort by:</label>
             <option>Relevance</option>
             <option>Price: Low to High</option>
             <option>Price: High to Low</option>
@@ -96,29 +121,38 @@ export default function UsedCars() {
         {/* GRID OF CAR CARDS */}
         <div className="carsGrid">
           {cars.map((car) => (
-            <div key={car.id} className="carCard">
-              <div className="carImageWrapper">
-                <Image
-                  src={car.img}
-                  width={400}
-                  height={250}
-                  alt={car.name}
-                  className="carImg"
-                />
-              </div>
+         <div key={car.id} className="newCarCard">
+          
 
-              <h3 className="carName">{car.name}</h3>
+  {/* IMAGE BOX */}
+  <div className="newCarImgBox">
+    <Image src={car.img} alt={car.name} fill className="newCarImg" />
 
-              <div className="detailsRow">
-                <span>{car.km}</span>
-                <span>{car.fuel}</span>
-                <span>{car.transmission}</span>
-              </div>
+    <div className="newHeart">♡</div>
 
-              <p className="price">₹ {car.price}</p>
+    <div className="newSeller">Seller</div>
+  </div>
 
-              <button className="detailsBtn">View Details</button>
-            </div>
+  {/* CONTENT */}
+  <div className="newCarContent">
+    <h3 className="newCarTitle">{car.name}</h3>
+
+    <div className="newTags">
+      <span className="newTag">{car.km}</span>
+      <span className="newTag">{car.fuel}</span>
+      <span className="newTag">{car.transmission}</span>
+    </div>
+
+    <p className="newPrice">₹ {car.price}</p>
+
+    <div className="newLocation">
+      <span>📍</span> Noida Sector 63
+    </div>
+
+    <button className="newContactBtn">Contact Seller</button>
+  </div>
+</div>
+
           ))}
         </div>
 

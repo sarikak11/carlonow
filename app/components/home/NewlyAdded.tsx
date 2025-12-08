@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
 import { HiLocationMarker } from "react-icons/hi";
-import "../style/newadded.css";
+import "../../style/newadded.css";
 
 export default function NewlyAdded() {
   const [wishlist, setWishlist] = useState<number[]>([]);

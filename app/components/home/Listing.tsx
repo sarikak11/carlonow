@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
 import { HiLocationMarker } from "react-icons/hi";
-import "../style/listing.css";
+import "../../style/listing.css";
 
 export default function Listing() {
   const [activeFilter, setActiveFilter] = useState("All");

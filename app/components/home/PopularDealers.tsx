@@ -1,4 +1,4 @@
-import "../style/dealers.css";  // ✔ correct for normal CSS
+import "../../style/dealers.css";  // ✔ correct for normal CSS
 
 export default function Dealers() {
   const dealers = [

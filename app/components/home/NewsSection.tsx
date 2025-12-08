@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import "../style/news.css"; // ✅ import your CSS file
+import "../../style/news.css"; // ✅ import your CSS file
 
 export default function NewsSection() {
   const newsList = [
