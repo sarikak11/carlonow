@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import "../style/usedcars.css";
+import { useState } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export default function UsedCars() {
   const cars = [
@@ -120,40 +123,49 @@ export default function UsedCars() {
 
         {/* GRID OF CAR CARDS */}
         <div className="carsGrid">
-          {cars.map((car) => (
-         <div key={car.id} className="newCarCard">
-          
+         {cars.map((car) => {
+  const [liked, setLiked] = useState(false);
 
-  {/* IMAGE BOX */}
-  <div className="newCarImgBox">
-    <Image src={car.img} alt={car.name} fill className="newCarImg" />
+  return (
+    <div key={car.id} className="newCarCard">
 
-    <div className="newHeart">♡</div>
+      {/* IMAGE BOX */}
+      <div className="newCarImgBox">
+        <Image src={car.img} alt={car.name} fill className="newCarImg" />
 
-    <div className="newSeller">Seller</div>
-  </div>
+        {/* Heart Icon */}
+        <div 
+          className="newHeart"
+          onClick={() => setLiked(!liked)}
+        >
+          {liked ? <AiFillHeart size={26} color="red" /> : <AiOutlineHeart size={26} />}
+        </div>
 
-  {/* CONTENT */}
-  <div className="newCarContent">
-    <h3 className="newCarTitle">{car.name}</h3>
+        <div className="newSeller">Seller</div>
+      </div>
 
-    <div className="newTags">
-      <span className="newTag">{car.km}</span>
-      <span className="newTag">{car.fuel}</span>
-      <span className="newTag">{car.transmission}</span>
+      {/* CONTENT */}
+      <div className="newCarContent">
+        <h3 className="newCarTitle">{car.name}</h3>
+
+        <div className="newTags">
+          <span className="newTag">{car.km}</span>
+          <span className="newTag">{car.fuel}</span>
+          <span className="newTag">{car.transmission}</span>
+        </div>
+
+        <p className="newPrice">₹ {car.price}</p>
+
+        <div className="newLocation">
+          <span>📍</span> Noida Sector 63
+        </div>
+
+        <button className="newContactBtn">Contact Seller</button>
+      </div>
     </div>
+  );
+})}
 
-    <p className="newPrice">₹ {car.price}</p>
-
-    <div className="newLocation">
-      <span>📍</span> Noida Sector 63
-    </div>
-
-    <button className="newContactBtn">Contact Seller</button>
-  </div>
-</div>
-
-          ))}
         </div>
 
         {/* PAGINATION */}
