@@ -6,21 +6,20 @@ export const metadata = {
   description: "Car Marketplace",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-      
         <Header />
-        
-        <main className="w-[95%] mx-auto">
-          {children}</main>
-          <Footer />  
+
+        {/* Full-width wrapper */}
+        <div className="full-width-wrapper">
+          {children}
+        </div>
+
+        <Footer />
       </body>
     </html>
   );
 }
+

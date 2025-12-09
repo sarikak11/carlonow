@@ -9,8 +9,8 @@ import "../../style/banner.css";
 
 export default function Banner() {
   const slides = [
-    "/image/banner/img.jpg",
-    "/image/banner/image2.jpg",
+    "/image/banner/car2.jpg",
+    "/image/banner/car1.jpg",
     "/image/banner/images3.jpg",
   ];
 
@@ -37,27 +37,29 @@ export default function Banner() {
 
   return (
     <section className="banner-container">
-      <div className="absolute inset-0">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={slides[current]}
-            custom={direction}
-            initial={{ x: direction > 0 ? 200 : -200, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: direction > 0 ? -200 : 200, opacity: 0 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-            className="banner-slide"
-          >
-            <Image
-              src={slides[current]}
-              alt={`Car Slide ${current + 1}`}
-              fill
-              className="banner-image"
-              priority
-            />
-            <div className="banner-overlay" />
-          </motion.div>
-        </AnimatePresence>
+      <div className="banner-wrapper">
+       <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+  <motion.div
+    key={slides[current]}
+    custom={direction}
+    initial={{ opacity: 0, x: direction > 0 ? 60 : -60 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: direction > 0 ? -60 : 60 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="banner-slide"
+   
+  >
+    <Image
+      src={slides[current]}
+      alt={`Car Slide ${current + 1}`}
+      fill
+      className="banner-image"
+      priority
+    />
+    <div className="banner-overlay" />
+  </motion.div>
+</AnimatePresence>
+
       </div>
 
       {/* Search Card */}
@@ -88,15 +90,7 @@ export default function Banner() {
         <button className="search-btn">Search</button>
       </div>
 
-      {/* Navigation Arrows */}
-      <button className="nav-arrow nav-left" onClick={prevSlide}>
-        <FaChevronLeft size={20} />
-      </button>
-
-      <button className="nav-arrow nav-right" onClick={nextSlide}>
-        <FaChevronRight size={20} />
-      </button>
-
+    
       {/* Dot Indicators */}
       <div className="dot-container">
         {slides.map((_, i) => (

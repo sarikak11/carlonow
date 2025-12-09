@@ -1,7 +1,7 @@
 // app/home/page.tsx
 import React from "react";
 
-
+ 
 // Home page sections
 import Banner from "@/components/home/Banner";
 import Listing from "@/components/home/Listing";
@@ -29,6 +29,8 @@ export default function HomePage() {
       
       <main>
         <Banner />
+
+         <div className="w-[95%] mx-auto">
         <Listing />
         <BestDealer />
         <NewlyAdded />
@@ -38,6 +40,7 @@ export default function HomePage() {
         <VerifyDealerCity />
         <NewsSection />
         <DealerReviews />
+        </div>
       </main>
       
     </>
