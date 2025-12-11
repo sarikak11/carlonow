@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -30,31 +31,41 @@ export default function NewlyAdded() {
 
   return (
     <section className="newadded-wrapper">
-      <h2 className="newadded-title">Newly Added</h2>
 
-      <div className="swiper-button-prev-custom">❮</div>
-      <div className="swiper-button-next-custom">❯</div>
+      <h2 className="newadded-section-title">Newly Added</h2>
+
+      {/* REAL NAVIGATION BUTTONS */}
+      <div className="newadded-prev">❮</div>
+      <div className="newadded-next">❯</div>
 
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-button-next-custom",
-          prevEl: ".swiper-button-prev-custom",
+          nextEl: ".newadded-next",
+          prevEl: ".newadded-prev",
         }}
         loop={true}
+        speed={650}
+        spaceBetween={20}
+        slidesPerView={1.1}
         centeredSlides={false}
+        resistance={true}
+        resistanceRatio={0.75}
+        grabCursor={true}
+
         breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 10 },
-          480: { slidesPerView: 1, spaceBetween: 12 },
-          640: { slidesPerView: 2, spaceBetween: 14 },
-          768: { slidesPerView: 2, spaceBetween: 16 },
-          1024: { slidesPerView: 3, spaceBetween: 18 },
-          1280: { slidesPerView: 4, spaceBetween: 20 },
+         480: { slidesPerView: 1.4 },
+          640: { slidesPerView: 2.1 },
+          768: { slidesPerView: 2.4 },
+          1024: { slidesPerView: 3.1 },
+          1280: { slidesPerView: 4 },
         }}
       >
         {cars.map((car) => (
           <SwiperSlide key={car.id}>
             <div className="newadded-card">
+
+              {/* Image Section */}
               <div className="newadded-img-box">
                 <img src={car.img} alt="car" className="newadded-img" />
 
@@ -69,10 +80,12 @@ export default function NewlyAdded() {
                   )}
                 </div>
 
-                <div className="seller-badge">Seller</div>
+                <div className="sellers-badge">Seller</div>
               </div>
 
+              {/* Content */}
               <div className="newadded-content">
+
                 <h2 className="newadded-title-card">BMW M4 LXI</h2>
 
                 <div className="newadded-tags">
@@ -91,6 +104,7 @@ export default function NewlyAdded() {
 
                 <button className="newadded-btn">Contact Seller</button>
               </div>
+
             </div>
           </SwiperSlide>
         ))}

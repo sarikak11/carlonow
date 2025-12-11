@@ -31,11 +31,9 @@ export default function Listing() {
       : cars.filter((car) => car.brand === activeFilter);
 
   const toggleWishlist = (id: number) => {
-    if (wishlist.includes(id)) {
-      setWishlist(wishlist.filter((w) => w !== id));
-    } else {
-      setWishlist([...wishlist, id]);
-    }
+    setWishlist((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    );
   };
 
   return (
@@ -56,24 +54,29 @@ export default function Listing() {
       </div>
 
       {/* Navigation */}
-      <div className="swiper-button-custom swiper-prev">❮</div>
-      <div className="swiper-button-custom swiper-next">❯</div>
+      <div className="swiper-button-custom listing-prev">❮</div>
+      <div className="swiper-button-custom listing-next">❯</div>
 
       {/* Slider */}
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-next",
-          prevEl: ".swiper-prev",
+          nextEl: ".listing-next",
+          prevEl: ".listing-prev",
         }}
         loop={true}
+        speed={650} 
+        spaceBetween={18}
+        slidesPerView={1.15}
+        centeredSlides={false}
+        resistance={true}
+        resistanceRatio={0.85}
         breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 10 },
-          480: { slidesPerView: 1, spaceBetween: 12 },
-          640: { slidesPerView: 2, spaceBetween: 14 },
-          768: { slidesPerView: 2, spaceBetween: 16 },
-          1024: { slidesPerView: 3, spaceBetween: 18 },
-          1280: { slidesPerView: 4, spaceBetween: 20 },
+        480: { slidesPerView: 1.4 },
+          640: { slidesPerView: 2.1 },
+          768: { slidesPerView: 2.4 },
+          1024: { slidesPerView: 3.1 },
+          1280: { slidesPerView: 4 },
         }}
       >
         {filteredCars.map((car) => (

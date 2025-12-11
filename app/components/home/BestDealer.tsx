@@ -44,14 +44,19 @@ export default function BestDealer() {
           prevEl: ".swiper-button-prev-custom",
         }}
         loop={true}
+         speed={650}
+         spaceBetween={18}
+        slidesPerView={1.15}
         centeredSlides={false}
+        resistance={true}
+        resistanceRatio={0.85}
+        grabCursor={true}
         breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 10 },
-          480: { slidesPerView: 1, spaceBetween: 12 },
-          640: { slidesPerView: 2, spaceBetween: 14 },
-          768: { slidesPerView: 2, spaceBetween: 16 },
-          1024: { slidesPerView: 3, spaceBetween: 18 },
-          1280: { slidesPerView: 4, spaceBetween: 20 },
+         480: { slidesPerView: 1.4 },
+          640: { slidesPerView: 2.1 },
+          768: { slidesPerView: 2.4 },
+          1024: { slidesPerView: 3.1 },
+          1280: { slidesPerView: 4 },
         }}
       >
         {cars.map((car) => (
@@ -72,7 +77,7 @@ export default function BestDealer() {
                   )}
                 </div>
 
-                <div className="seller-badge">Seller</div>
+                <div className="seller-badg">Seller</div>
               </div>
 
               <div className="dealer-content">

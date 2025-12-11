@@ -1,94 +1,87 @@
 /* WRAPPER */
 .newadded-wrapper {
-  width: 100%;
-  padding-left: 24px;
-  padding-right: 24px;
-  margin-top: 40px;
+padding: 20px;
   position: relative;
 }
 
-.newadded-title {
-  font-size: 24px;
+.newadded-section-title{
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 16px;
-  color: #000;
+  margin-bottom: 12px;
+  color: black;
 }
 
-@media (min-width: 768px) {
-  .newadded-title {
-    font-size: 32px;
-  }
-}
+
 
 /* ARROWS */
-.swiper-button-prev-custom,
-.swiper-button-next-custom {
+.newadded-prev,
+.newadded-next{
   position: absolute;
-  top: 55%;
-  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
   background: white;
-  padding: 12px;
+  padding: 10px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+  font-size: 24px;
   user-select: none;
+   width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+   justify-content: center;
 }
 
-.swiper-button-prev-custom {
-  left: 0;
+.newadded-prev {
+  left: 5px;
 }
 
-.swiper-button-next-custom {
-  right: 0;
+.newadded-next {
+  right: 5px;
 }
-
 /* CARD */
 .newadded-card {
-  width: 100%;
-  max-width: 310px;
-  background: white;
-  border-radius: 22px;
+  background: #fff;
+  border-radius: 14px;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  color: #000;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: 0.25s;
+  
+  color: black;
 }
 
 .newadded-card:hover {
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
 }
 
 /* IMAGE AREA */
 .newadded-img-box {
   position: relative;
-  width: 304px;
-  height: 200px;
-  overflow: hidden;
-  border-top-left-radius: 22px;
-  border-top-right-radius: 22px;
-  color: #000;
+  width: 100%;
+  height: 170px;
+  
+  
 }
 
 .newadded-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+   display: block;
 }
 
 /* HEART BUTTON */
 .heart-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+ position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  z-index: 20;
 }
 
 .heart-default {
-  font-size: 24px;
+  font-size: 26px;
   color: #000;
 }
 
@@ -98,60 +91,67 @@
 }
 
 /* SELLER BADGE */
-.seller-badge {
+.sellers-badge {
   position: absolute;
-  bottom: -4px;
-  left: 0;
+  bottom: 0px;
+  left: 0px;
   background: white;
-  color: #1e3a8a;
-  font-size: 14px;
+  color: #0a2a75;
+  font-size: 12px;
   font-weight: 600;
-  padding: 6px 20px;
-  border-top-right-radius: 16px;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+  padding: 4px 15px;
+  border-top-right-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* CONTENT */
 .newadded-content {
-  padding: 10px;
-  color: #000;
+  padding: 10px 14px;
+  color: black;
 }
 
 .newadded-title-card {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
+  
+   margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
   color: black;
 }
 
 .newadded-tags {
+   font-size: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 10px;
-  margin-bottom: 8px;
-  color: rgb(114, 114, 114);
+  margin-top: 6px;
+  color: rgb(122, 122, 122);
 }
 
 .newadded-tags span {
-  background: #f3f4f6;
-  padding: 4px 8px;
-  border-radius: 6px;
+  font-size: 10px;
+  background: #f3f3f3;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: black;
 }
 
 .newadded-price {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
-  margin-bottom: 6px;
-  color: #000;
+  margin: 8px 0;
+  color: black;
 }
 
 .newadded-location {
   display: flex;
   align-items: center;
-  gap: 4px;
-  color: black;
-  font-size: 12px;
+  gap: 5px;
+  font-size: 14px;
   margin-bottom: 12px;
+  color:#555;
 }
 
 .location-icon {
@@ -160,14 +160,14 @@
 
 /* BUTTON */
 .newadded-btn {
-  width: 100%;
-  background: #1e3a8a;
+   width: 100%;
+  padding: 8px 0;
+  margin-top: 10px;
+  background: #003a83;
   color: white;
-  font-size: 14px;
+  border-radius: 6px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
   cursor: pointer;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+  border: none;
 }
