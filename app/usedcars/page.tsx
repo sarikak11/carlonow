@@ -11,7 +11,7 @@ export default function UsedCars() {
       name: "2021 Maruti Suzuki Swift",
       price: "6.50 Lakh",
       km: "25,000 km",
-      fuel: "Petrol",
+      fuel: "Petrol", 
       transmission: "Manual",
       img:"/image/listcard/car1.png",
     },

@@ -30,6 +30,13 @@ export default function Dealers() {
       desc: "Classic cars, timeless quality.",
       img: "/image/popularsdeals/image4.png",
     },
+     {
+      name: "Heritage Motors",
+      rating: 4.7,
+      reviews: "180+",
+      desc: "Classic cars, timeless quality.",
+      img: "/image/popularsdeals/image4.png",
+    },
   ];
 
   return (

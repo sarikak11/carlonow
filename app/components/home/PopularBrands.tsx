@@ -1,37 +1,86 @@
+"use client";
 import Image from "next/image";
 import "../../style/style.css";
 
-
 export default function PopularBrands() {
   const brands = [
-    { image: "/image/brands/brand7.png", name: "Toyota" },
-    { image: "/image/brands/brand1.png", name: "Mercedes-Benz" },
-    { image: "/image/brands/brand2.png", name: "Hyundai" },
-    { image: "/image/brands/brand3.png", name: "Tata" },
-    { image: "/image/brands/brand4.png", name: "Honda" },
-    { image: "/image/brands/brand5.png", name: "Mahindra" },
-    { image: "/image/brands/brand6.png", name: "Tata" },
-    { image: "/image/brands/brand8.png", name: "Audi" },
+    {
+      id: 1,
+      logo: "/image/brands/brand6.png",
+      car: "/image/brands/tata image.png",
+      name: "Tata",
+    },
+    {
+      id: 2,
+      logo: "/image/brands/suzuki.png",
+      car: "/image/brands/suzuki image.png",
+      name: "Suzuki",
+    },
+    {
+      id: 3,
+      logo: "/image/brands/brand3.png",
+      car: "/image/brands/bmw image.png",
+      name: "BMW",
+    },
+    {
+      id: 4,
+      logo: "/image/brands/skoda brand.png",
+      car: "/image/brands/skoda image.png",
+      name: "skoda",
+    },
+    {
+      id: 5,
+      logo: "/image/brands/brand4.png",
+      car: "/image/brands/honda image.png",
+      name: "Honda",
+    },
+    {
+      id: 6,
+      logo: "/image/brands/toyta.png",
+      car: "/image/brands/toyta image.png",
+      name: "Toyta",
+    },
+    {
+      id: 7,
+      logo: "/image/brands/jeep.png",
+      car: "/image/brands/jeep image.png",
+      name: "jeep",
+    },  
+    {
+      id: 8,
+      logo: "/image/brands/brand5.png",
+      car: "/image/brands/mahindra image.png",
+      name: "Honda",
+    },
   ];
 
   return (
-    <div className="popular-section">
-      <h2 className="popular-heading">Explore Popular Dealers Brands</h2>
+    <section className="popularbrands-wrapper">
+      <h2 className="pb-heading">Explore Popular Dealers Brands</h2>
 
-      <div className="brands-grid">
-        {brands.map((brand, i) => (
-          <div key={i} className="brand-card">
-            <Image
-              src={brand.image}
-              width={80}
-              height={80}
-              alt={brand.name}
-              className="brand-logo"
-            />
-            <p className="brand-name">{brand.name}</p>
+      <div className="pb-grid">
+        {brands.map((brand) => (
+          <div key={brand.id} className="pb-card">
+            <div className="pb-logo">
+              <Image
+                src={brand.logo}
+                width={120}
+                height={50}
+                alt={brand.name}
+              />
+            </div>
+
+            <div className="pb-car">
+              <Image
+                src={brand.car}
+                width={250}
+                height={150}
+                alt={brand.name + " car"}
+              />
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

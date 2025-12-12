@@ -509,7 +509,6 @@
 
 /* Verify your city css code is here  */
 
-/* Same width container like 'Explore Popular Dealer Brands' */
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -580,18 +579,27 @@
 
 /* Grid layout */
 .dealer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ display: flex;
   gap: 30px;
-  justify-items: center;
+  padding: 10px 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  justify-content: flex-start; /* FIX: prevents shrinking to left */
+}
+.dealer-grid::-webkit-scrollbar {
+  display: none;
 }
 
 /* Card */
 .dealer-card {
-  width: 260px;
-  border-radius: 15px;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+   min-width: 300px;
+  padding: 0 2px; /* optional spacing on edges */
 }
+
 
 /* Image container */
 .img-box {
@@ -666,60 +674,92 @@
 .bottom-space {
   height: 80px;
 }
-
-/* --------------------------here is the css code of popular dealers brans  ----------------------------------*/
-
-/* Section container */
-.popular-section {
+video.review-image {
+  object-fit: cover;
+  border-radius: 15px;
   width: 100%;
-  margin-top: 40px;
-  padding: 20px;
+  height: 100%;
 }
 
-/* Heading */
-.popular-heading {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: #1a1a1a;
-}
 
-/* GRID layout like screenshot */
-.brands-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 25px;
-}
 
-/* Each card */
-.brand-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 25px 10px;
+/* Here is the css code of  popular brands  */
+
+.popularbrands-wrapper {
+ width: 100%;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e5e5e5;
-  transition: 0.2s ease-in-out;
+  
 }
 
-/* Hover effect (optional) */
-.brand-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+.pb-heading {
+ font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+ 
+  width: 100%;
 }
 
-/* Logo size */
-.brand-logo {
-  object-fit: contain;
-  margin-bottom: 10px;
+/* Grid Layout */
+.pb-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;       /* enables horizontal scroll */
+  white-space: nowrap;    /* prevents wrapping to next line */
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
 }
 
-/* Brand name text */
-.brand-name {
-  font-size: 14px;
-  margin-top: 8px;
+/* Card */
+.pb-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 8px;  
   text-align: center;
-  color: #333;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+   height: 140px; 
+   width: 100%;
+}
+
+.pb-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Logo section */
+.pb-logo img {
+  width: 60px;
+  height: auto;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+/* Car Image */
+.pb-car img {
+  width: 80px;
+  height: auto;
+  margin: auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .pb-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
+    gap: 12px;
+  }
+
+ .pb-card {
+    height: 130px; 
+    padding: 10px 6px;
+  }
+
+  .pb-logo img {
+    width: 50px;
+  }
+
+  .pb-car img {
+    width: 70px;
+  }
 }

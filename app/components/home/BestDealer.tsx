@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +9,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 
 import { HiLocationMarker } from "react-icons/hi";
-import "../../style/bestdeal.css";
+import "../../style/newadded.css";
 
 export default function BestDealer() {
   const [wishlist, setWishlist] = useState<number[]>([]);
@@ -29,28 +30,29 @@ export default function BestDealer() {
   ];
 
   return (
-    <section className="bestdealer-wrapper">
-      <h2 className="bestdealer-title">
-        Best Dealer For Your Near Location
-      </h2>
+    <section className="newadded-wrapper">
 
-      <div className="swiper-button-prev-custom">❮</div>
-      <div className="swiper-button-next-custom">❯</div>
+      <h2 className="newadded-section-title">Best Dealers Nearby </h2>
+
+      {/* REAL NAVIGATION BUTTONS */}
+      <div className="newadded-prev">❮</div>
+      <div className="newadded-next">❯</div>
 
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-button-next-custom",
-          prevEl: ".swiper-button-prev-custom",
+          nextEl: ".newadded-next",
+          prevEl: ".newadded-prev",
         }}
         loop={true}
-         speed={650}
-         spaceBetween={18}
-        slidesPerView={1.15}
+        speed={650}
+        spaceBetween={20}
+        slidesPerView={1.1}
         centeredSlides={false}
         resistance={true}
-        resistanceRatio={0.85}
+        resistanceRatio={0.75}
         grabCursor={true}
+
         breakpoints={{
          480: { slidesPerView: 1.4 },
           640: { slidesPerView: 2.1 },
@@ -61,10 +63,11 @@ export default function BestDealer() {
       >
         {cars.map((car) => (
           <SwiperSlide key={car.id}>
-            <div className="dealer-card">
+            <div className="newadded-card">
 
-              <div className="dealer-img-box">
-                <img src={car.img} alt="car" className="dealer-img" />
+              {/* Image Section */}
+              <div className="newadded-img-box">
+                <img src={car.img} alt="car" className="newadded-img" />
 
                 <div
                   onClick={() => toggleWishlist(car.id)}
@@ -77,28 +80,31 @@ export default function BestDealer() {
                   )}
                 </div>
 
-                <div className="seller-badg">Seller</div>
+                <div className="sellers-badge">Seller</div>
               </div>
 
-              <div className="dealer-content">
-                <h2 className="dealer-title">BMW M4 LXI</h2>
+              {/* Content */}
+              <div className="newadded-content">
 
-                <div className="dealer-tags">
+                <h2 className="newadded-title-card">BMW M4 LXI</h2>
+
+                <div className="newadded-tags">
                   <span>22.59k km</span>
                   <span>Petrol</span>
                   <span>Manual</span>
                   <span>DL-1C</span>
                 </div>
 
-                <p className="dealer-price">₹ 5.90 Lakh</p>
+                <p className="newadded-price">₹ 5.90 Lakh</p>
 
-                <div className="dealer-location">
+                <div className="newadded-location">
                   <HiLocationMarker className="location-icon" />
                   <span>Noida Sector 63</span>
                 </div>
 
-                <button className="dealer-btn">Contact Seller</button>
+                <button className="newadded-btn">Contact Seller</button>
               </div>
+
             </div>
           </SwiperSlide>
         ))}

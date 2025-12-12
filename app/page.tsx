@@ -34,10 +34,11 @@ export default function HomePage() {
         <Listing />
         <BestDealer />
         <NewlyAdded />
-        <HowWork />
+       
         <PopularDealers />
         <PopularBrands />
         <VerifyDealerCity />
+         <HowWork />
         <NewsSection />
         <DealerReviews />
         </div>
