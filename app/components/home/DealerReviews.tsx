@@ -39,6 +39,14 @@ export default function DealerReviews() {
       desc: "Hello India. How are you",
       rating: 4,
     },
+     {
+      id: 5,
+      image: "/image/review/review1.jpg",
+      video: "/videos/review1.mp4",
+      title: "Carshaala | Ghaziabad",
+      desc: "Hello India. How are you",
+      rating: 4,
+    },
   ];
 
   return (

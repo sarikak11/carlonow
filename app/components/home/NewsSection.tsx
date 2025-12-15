@@ -30,6 +30,14 @@ export default function NewsSection() {
       full:
         "Full article about Carlos Nasar's incredible record...",
     },
+     {
+      id: 4,
+      title: "Carlos Nasar Wins 89kg Gold and Breaks World Record",
+      desc: "The Bulgarian weightlifter smashed the world record...",
+      image: "/image/newsimg/newsimg3.png",
+      full:
+        "Full article about Carlos Nasar's incredible record...",
+    },
   ];
 
   const [activeNews, setActiveNews] = useState(newsList[0]);
